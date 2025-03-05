@@ -60,7 +60,10 @@ public class PostagemController {
 				.body(postagemRepository.save(postagem));
 	}
 	
+<<<<<<< HEAD
 	//atualizar
+=======
+>>>>>>> c1d3254346cc91b3d832c20fc6b6d9a90a885110
 	@PutMapping
 	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
 		return postagemRepository.findById(postagem.getId())
@@ -69,7 +72,10 @@ public class PostagemController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());	
 	}
 	
+<<<<<<< HEAD
 	//deletar
+=======
+>>>>>>> c1d3254346cc91b3d832c20fc6b6d9a90a885110
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
