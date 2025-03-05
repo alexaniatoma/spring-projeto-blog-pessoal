@@ -60,6 +60,7 @@ public class PostagemController {
 				.body(postagemRepository.save(postagem));
 	}
 	
+	//atualizar
 	@PutMapping
 	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
 		return postagemRepository.findById(postagem.getId())
@@ -68,6 +69,7 @@ public class PostagemController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());	
 	}
 	
+	//deletar
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
