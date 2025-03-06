@@ -20,17 +20,21 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.repository.PostagemRepository;
+import com.generation.blogpessoal.repository.TemaRepository;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin(origins = "*", allowedHeaders = "*") //gerencia se a API é aberta ou fechada
-//fechada origens = "meusite.com" / nosso caso a API esta aberta
+//fechada origens = "meusite.com" / nosso caso a API esta aberta, torna a API acessível
 public class PostagemController { 
 	
 	@Autowired //injeta o repository
 	private PostagemRepository postagemRepository;
+	
+	@Autowired
+	private TemaRepository temaRepository;
 	
 	@GetMapping //qdo chegar um pedido roda pra mim este metodo
 	public ResponseEntity<List<Postagem>> getAll() {
@@ -56,26 +60,29 @@ public class PostagemController {
 	// status -> CREATED statuscode201
 	@PostMapping
 	public ResponseEntity<Postagem> post(@Valid @RequestBody Postagem postagem) {
+		if(temaRepository.existsById(postagem.getTema().getId()))
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(postagemRepository.save(postagem));
+		
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema não existe!", null);
 	}
 	
-<<<<<<< HEAD
-	//atualizar
-=======
->>>>>>> c1d3254346cc91b3d832c20fc6b6d9a90a885110
+
 	@PutMapping
 	public ResponseEntity<Postagem> put(@Valid @RequestBody Postagem postagem) {
-		return postagemRepository.findById(postagem.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.OK)
-				.body(postagemRepository.save(postagem)))
-				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());	
+		if( postagemRepository.existsById(postagem.getId())) {
+				
+				if(temaRepository.existsById(postagem.getTema().getId()))
+					return ResponseEntity.status(HttpStatus.OK)				
+							.body(postagemRepository.save(postagem));
+				
+				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tema não existe!", null);
+		}
+		
+				return (ResponseEntity.status(HttpStatus.NOT_FOUND).build());	
 	}
 	
-<<<<<<< HEAD
-	//deletar
-=======
->>>>>>> c1d3254346cc91b3d832c20fc6b6d9a90a885110
+
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
