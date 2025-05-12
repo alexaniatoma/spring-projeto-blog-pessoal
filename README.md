@@ -1,6 +1,7 @@
-Projeto de uma API RESTful para um Blog Pessoal, desenvolvida com Spring Boot e Spring Security, com endpoints testados via Insomnia e documentação gerada automaticamente.
+📝 Blog Pessoal <br><br>
+Projeto de uma API RESTful para um Blog Pessoal, desenvolvida com Spring Boot e Spring Security, com endpoints testados via Insomnia e documentação gerada automaticamente. <br><br>
 
-🚀 Tecnologias Utilizadas
+🚀 Tecnologias Utilizadas:<br><br>
 ✅ Java 17+
 
 ✅ Spring Boot
@@ -9,18 +10,19 @@ Projeto de uma API RESTful para um Blog Pessoal, desenvolvida com Spring Boot e 
 
 ✅ JPA / Hibernate
 
-✅ MySQL ou H2 (dependendo do ambiente)
+✅ MySQL
 
 ✅ Swagger para documentação da API
 
 ✅ Insomnia para testes de requisições
 
-✅ Maven como gerenciador de dependências
-📝 Blog Pessoal
-🔐 Autenticação
-Este projeto utiliza Spring Security com autenticação via JWT (JSON Web Token). É necessário realizar login para acessar endpoints protegidos.
+✅ Maven como gerenciador de dependências <br><br>
 
-📦 Funcionalidades da API
+🔐 Autenticação <br><br>
+Este projeto utiliza Spring Security com autenticação via JWT (JSON Web Token). É necessário realizar login para acessar endpoints protegidos. <br><br>
+
+📦 Funcionalidades da API <br>
+
 🔐 Cadastro e login de usuários
 
 ✍️ Criar postagens
@@ -31,12 +33,12 @@ Este projeto utiliza Spring Security com autenticação via JWT (JSON Web Token)
 
 ❌ Deletar postagens
 
-🔎 Buscar postagens por título ou tema
+🔎 Buscar postagens por título ou tema <br><br>
 
 📄 Documentação da API
 A documentação interativa está disponível através do Swagger UI
 
-🧪 Testes com Insomnia
+🧪 Testes com Insomnia 
 Você pode importar a collection do Insomnia para testar os endpoints da aplicação.
 
 ⚙️ Como rodar o projeto localmente
@@ -47,4 +49,4 @@ Maven
 
 Git
 
-MySQL ou usar o banco H2 embutido
+MySQL 
